@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+* {
+    box-sizing: border-box;
+  }
+
+
+// custom styling
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: white !important;
+}
+
+div.mat-line {
+    white-space: normal !important;
+    height: auto !important;
+    text-overflow: initial!important
+}

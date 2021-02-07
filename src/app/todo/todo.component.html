@@ -1,0 +1,53 @@
+<div class="todo-list-container">
+    <h3>{{title}}</h3>
+    <mat-card>
+        <div class="todo-list">
+
+            <div class="item" *ngFor="let item of todoItems; index as i">
+
+                <mat-icon matListIcon>{{getToDoIcon(item.status)}}</mat-icon>
+                <div class="item-header">
+                        <h4 class="item-title">{{item.title}}</h4>
+                        <span> {{item.content}} </span><br>
+                        <button mat-button (click)="updateStatus(item, toDoStatus.Started)"
+                            *ngIf="item.status === toDoStatus.ToDo">
+                            Start
+                        </button>
+                        <button mat-button (click)="updateStatus(item, toDoStatus.Done)"
+                            *ngIf="item.status === toDoStatus.Started">
+                            Done
+                        </button>
+                </div>
+                <button mat-icon-button (click)="delete(i)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+
+
+            </div>
+
+
+
+        </div>
+
+        <div class="todo-add add-item">
+            <mat-divider></mat-divider>
+
+            <mat-form-field class="title-form-field" appearance="fill">
+                <input matInput type="text" [(ngModel)]="itemTitle" placeholder="Title here">
+                <button mat-button *ngIf="itemTitle" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="itemTitle=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+            <mat-form-field class="content-form-field" appearance="fill">
+                <textarea matInput [(ngModel)]="itemContent" placeholder="Content here" rows="5"></textarea>
+                <button mat-button *ngIf="itemContent" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="itemContent=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+            <button mat-button color="primary" class="save-button" (click)='save()'
+                [disabled]="!itemTitle">Save</button>
+        </div>
+    </mat-card>
+</div>
